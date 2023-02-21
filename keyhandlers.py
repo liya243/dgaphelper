@@ -667,7 +667,7 @@ def Issues(call, bot, cur, con):
                 WHERE chat_id=(%s) AND 
                 message_id=(%s)''',
                 [call.message.chat.id, call.message.message_id])
-                con.commit()
+            con.commit()
         except:
             print('MessageNotModifed63')
     #6-ка: поломки, мыло, бумага --> Выбран 2,3,4,5 этаж <-- Назад
