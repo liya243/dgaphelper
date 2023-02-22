@@ -175,35 +175,19 @@ Back_to_Rooms_keyboard.add(types.InlineKeyboardButton(text="⬅️Назад", c
 #--------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-#Начало --> 6-ка: поломки/мыло/бумага --> 12345 этаж --> На кухне
-Kitchen_keyboard = types.InlineKeyboardMarkup()
+#Начало --> 6-ка: поломки/мыло/бумага --> 12345 этаж --> Кухня/Умывальник
+KitchenWash_keyboard = types.InlineKeyboardMarkup()
 rows = [{'Кран подтекает/не закрывается': 'TaB'},
         {'Кран гудит': 'TaB2'},
         {'Труба под раковиной подтекает': 'PiB'},
         {'Закончилось мыло': 'SoB'},
-        {'Что-то другое': 'AnB2'},
+        {'Что-то другое': 'AnB'},
         {'⬅️Назад': 'Bb9'}] #последняя кнопка возвращает в предыдущее Rooms_keyboard меню
 for row in rows:
-    Kitchen_keyboard.add(*[types.InlineKeyboardButton(text,callback_data=callback_data) for text,callback_data in row.items()])
+    KitchenWash_keyboard.add(*[types.InlineKeyboardButton(text,callback_data=callback_data) for text,callback_data in row.items()])
 #клавиатура из одной кнопки, возвращающая в меню Rooms_keyboard
-Back_to_Kitchen_keyboard = types.InlineKeyboardMarkup()
-Back_to_Kitchen_keyboard.add(types.InlineKeyboardButton(text="⬅️Назад", callback_data="Ki"))
-#--------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-#Начало --> 6-ка: поломки/мыло/бумага --> 12345 этаж --> В умывалке
-WashBasin_keyboard = types.InlineKeyboardMarkup()
-rows = [{'Кран подтекает/не закрывается': 'TaB3'},
-        {'Кран гудит': 'TaB4'},
-        {'Труба под раковиной подтекает': 'PiB2'},
-        {'Закончилось мыло': 'SoB2'},
-        {'Что-то другое': 'AnB3'},
-        {'⬅️Назад': 'Bb9'}] #последняя кнопка возвращает в предыдущее Rooms_keyboard меню
-for row in rows:
-    WashBasin_keyboard.add(*[types.InlineKeyboardButton(text,callback_data=callback_data) for text,callback_data in row.items()])
-#клавиатура из одной кнопки, возвращающая в меню WashBasin_keyboard
-Back_to_WashBasin_keyboard = types.InlineKeyboardMarkup()
-Back_to_WashBasin_keyboard.add(types.InlineKeyboardButton(text="⬅️Назад", callback_data="WaB"))
+Back_to_KitchenWash_keyboard = types.InlineKeyboardMarkup()
+Back_to_KitchenWash_keyboard.add(types.InlineKeyboardButton(text="⬅️Назад", callback_data="Ki"))
 #--------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -216,7 +200,7 @@ rows = [{'Раковина номер 1': 'SiB1'},
         {'Раковина номер 5': 'SiB5'},
         {'Раковина номер 6': 'SiB6'},
         {'Лень искать': 'LaB'},
-        {'⬅️Назад': 'WaB'}] #последняя кнопка возвращает в предыдущее WashBasin_keyboard меню
+        {'⬅️Назад': 'WaB'}] #последняя кнопка возвращает в предыдущее KitchenWash_keyboard меню
 for row in rows:
     Sink_keyboard.add(*[types.InlineKeyboardButton(text,callback_data=callback_data) for text,callback_data in row.items()])
 #--------------------------------------------------------------------------------------------------------------------------------------------------
@@ -226,7 +210,7 @@ for row in rows:
 Toilet_keyboard = types.InlineKeyboardMarkup()
 rows = [{'Засорился писсуар': 'UrB'},
         {'Кончилась бумага': 'PaB'},
-        {'Что-то другое': 'AnB4'},
+        {'Что-то другое': 'AnB'},
         {'⬅️Назад': 'Bb9'}] #последняя кнопка возвращает в предыдущее Rooms_keyboard меню
 for row in rows:
     Toilet_keyboard.add(*[types.InlineKeyboardButton(text,callback_data=callback_data) for text,callback_data in row.items()])
