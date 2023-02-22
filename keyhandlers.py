@@ -13,8 +13,8 @@ def Beginning(call, bot, cur, con):
                 text=open('texts/Начало.txt','r').read(),
                 reply_markup=Greet_keyboard)
             cur.execute('''DELETE from users 
-                WHERE chat_id=(%s) AND 
-                message_id=(%s)''', 
+                WHERE chat_id=(%s) 
+                AND   message_id=(%s)''', 
                 [call.message.chat.id, call.message.message_id])
             con.commit()
         except:
@@ -586,9 +586,10 @@ def Claims(call, bot, cur, con):
 #Кнопка починки в чате сената
 def Fix(call, bot, cur, con):
     if call.data == "FiB":
-        Floor = call.message.text.split('\n')[0][len(call.message.text.split('\n')[0]) - 1]
+        Floor = call.message.text.split('\n')[0][-1]
         Room = call.message.text.split('\n')[1]
         TypeOfProblem = call.message.text.split('\n')[2]
+        #проверка, 3 или 4 строки в жалобе (на случай если указан ещё и номер раковины)
         if len(call.message.text.split('\n')) == 3:
             cur.execute('''DELETE from problems 
                 WHERE floor=(%s) AND 
@@ -597,6 +598,10 @@ def Fix(call, bot, cur, con):
                 [int(Floor),Room,TypeOfProblem])
         else:
             NumberOfSink=call.message.text.split('\n')[3][len(call.message.text.split('\n')[3]) - 1]
+            #Если было указано что лень искать раковин(у)
+            if NumberOfSink=='у':
+                #в таком случае в базе они указаны под номером 0
+                NumberOfSink='0'
             cur.execute('''DELETE from problems 
                 WHERE floor=(%s) AND 
                 room=(%s) AND 
@@ -615,23 +620,23 @@ def Fix(call, bot, cur, con):
 def Issues(call, bot, cur, con):
     #6-ка: поломки, мыло, бумага
     if call.data == "BrB":
-        try:
-            bot.edit_message_text(chat_id=call.message.chat.id, 
-                message_id=call.message.message_id,
-                text="На каком этаже произошла проблема?", 
-                parse_mode="HTML", 
-                disable_web_page_preview=1, 
-                reply_markup=Broken_keyboard)
-            cur.execute('''DELETE from users 
-                WHERE chat_id=(%s) AND 
-                message_id=(%s)''',
-                [call.message.chat.id, call.message.message_id])
-            cur.execute('''INSERT INTO users (chat_id,message_id,button) 
-                VALUES (%s, %s, %s)''',
-                [call.message.chat.id, call.message.message_id, 'Problem'])
-            con.commit()
-        except:
-            print('MessageNotModifed59')
+        #try:
+        bot.edit_message_text(chat_id=call.message.chat.id, 
+            message_id=call.message.message_id,
+            text="На каком этаже произошла проблема?", 
+            parse_mode="HTML", 
+            disable_web_page_preview=1, 
+            reply_markup=Broken_keyboard)
+        cur.execute('''DELETE from users 
+            WHERE chat_id=(%s) AND 
+            message_id=(%s)''',
+            [call.message.chat.id, call.message.message_id])
+        cur.execute('''INSERT INTO users (chat_id,message_id,button) 
+            VALUES (%s, %s, %s)''',
+            [call.message.chat.id, call.message.message_id, 'Problem'])
+        con.commit()
+        #except:
+        #    print('MessageNotModifed59')
     #6-ка: поломки, мыло, бумага --> Выбран 1ый этаж
     if call.data == "1F":
         try:
@@ -650,24 +655,24 @@ def Issues(call, bot, cur, con):
             print('MessageNotModifed62')
     #6-ка: поломки, мыло, бумага --> Выбран 2,3,4,5ый этаж
     if call.data in ["2F","3F","4F","5F"]:
-        try:
-            bot.edit_message_text(chat_id=call.message.chat.id, 
-                message_id=call.message.message_id,
-                text="Где произошла проблема?", 
-                parse_mode="HTML", 
-                disable_web_page_preview=1, 
-                reply_markup=Rooms_keyboard)
-            cur.execute('''UPDATE users SET floor=(%s) 
-                WHERE chat_id=(%s) AND 
-                message_id=(%s)''',
-                [int(call.data[0]), call.message.chat.id, call.message.message_id])
-            cur.execute('''UPDATE users SET room=NULL 
-                WHERE chat_id=(%s) AND 
-                message_id=(%s)''',
-                [call.message.chat.id, call.message.message_id])
-            con.commit()
-        except:
-            print('MessageNotModifed63')
+        #try:
+        bot.edit_message_text(chat_id=call.message.chat.id, 
+            message_id=call.message.message_id,
+            text="Где произошла проблема?", 
+            parse_mode="HTML", 
+            disable_web_page_preview=1, 
+            reply_markup=Rooms_keyboard)
+        cur.execute('''UPDATE users SET floor=(%s) 
+            WHERE chat_id=(%s) AND 
+            message_id=(%s)''',
+            [int(call.data[0]), call.message.chat.id, call.message.message_id])
+        cur.execute('''UPDATE users SET room=(%s) 
+            WHERE chat_id=(%s) AND 
+            message_id=(%s)''',
+            [None, call.message.chat.id, call.message.message_id])
+        con.commit()
+        #except:
+        #    print('MessageNotModifed63')
     #6-ка: поломки, мыло, бумага --> Выбран 2,3,4,5 этаж <-- Назад
     if call.data == "Bb9":
         try:
@@ -677,9 +682,10 @@ def Issues(call, bot, cur, con):
                 parse_mode="HTML", 
                 disable_web_page_preview=1, 
                 reply_markup=Rooms_keyboard)
-            cur.execute('''UPDATE users SET room=NULL 
-                WHERE chat_id=(%s) AND message_id=(%s)''',
-                [call.message.chat.id, call.message.message_id])
+            cur.execute('''UPDATE users SET room=(%s) 
+                WHERE chat_id=(%s) 
+                AND message_id=(%s)''',
+                [None, call.message.chat.id, call.message.message_id])
             con.commit()
         except:
             print('MessageNotModifed60')
@@ -715,17 +721,17 @@ def Issues(call, bot, cur, con):
             message_id=(%s)''',
             [call.message.chat.id, call.message.message_id])
         rows = cur.fetchall()
-        match row[0][1]:
+        match rows[0][1]:
             #если кран сломался на кухне, то сразу добавляем в базу поломку на кухне
             case "кухня":
                 match call.data:
                     case "TaB":
-                        problem(bot,cur,con,row[0][0],'кухня','Кран подтекает/не закрывается',Null)
+                        problem(bot,cur,con,rows[0][0],'кухня','Кран подтекает/не закрывается',None)
                     case "TaB2":
-                        problem(bot,cur,con,row[0][0],'кухня','Кран гудит',Null)
+                        problem(bot,cur,con,rows[0][0],'кухня','Кран гудит',None)
                     case "PiB":
-                        problem(bot,cur,con,row[0][0],'кухня','Труба под раковиной подтекает',Null)
-                deletequery(bot, call)
+                        problem(bot,cur,con,rows[0][0],'кухня','Труба под раковиной подтекает',None)
+                deletequery(bot, call,cur,con)
             #если кран сломался в умывалке, то спрашиваем какой именно кран и записываем в базу какую конкретно поломку крана выбрал пользователь
             case "умывальник":
                 try:
@@ -757,11 +763,11 @@ def Issues(call, bot, cur, con):
             [call.message.chat.id, call.message.message_id])
         rows = cur.fetchall()
         #смотрим указано ли какая раковина или человеку лень
-        if call.data!="LaB"
-            problem(bot,cur,con,row[0][0],'умывальник',rows[0][1],int(call.data[4]))
+        if call.data!="LaB":
+            problem(bot,cur,con,rows[0][0],'умывальник',rows[0][1],int(call.data[3]))
         else:
-            problem(bot,cur,con,row[0][0],'умывальник',rows[0][1],0)
-        deletequery(bot, call)
+            problem(bot,cur,con,rows[0][0],'умывальник',rows[0][1],0)
+        deletequery(bot, call,cur,con)
     #6-ка: поломки, мыло, бумага --> Выбран 2,3,4,5ый этаж --> Кухня/Умывальник --> Закончилось мыло
     if call.data=="SoB":
         #смотрим, какой этаж и комнату до этого выбрал пользователь (мыло есть и на кухне и в умывалке)
@@ -770,8 +776,8 @@ def Issues(call, bot, cur, con):
             message_id=(%s)''',
             [call.message.chat.id, call.message.message_id])
         rows = cur.fetchall()
-        problem(bot,cur,con,row[0][0],'умывальник',rows[0][1],int(call.data[4]))
-        deletequery(bot, call)    
+        problem(bot,cur,con,rows[0][0],'умывальник',rows[0][1],int(call.data[4]))
+        deletequery(bot, call,cur,con)    
     #6-ка: поломки, мыло, бумага --> Выбран 2,3,4,5ый этаж --> Туалет
     if call.data == "ToB":
         try:
@@ -796,13 +802,25 @@ def Issues(call, bot, cur, con):
                 message_id=(%s)''',
                 [call.message.chat.id, call.message.message_id])
             rows = cur.fetchall()
+            floor=rows[0][0]
             match call.data:
                 case "UrB":
-                    problem(bot,cur,con,row[0][0],'туалет','Засорился писсуар',NULL)
+                    problem(bot,cur,con,rows[0][0],'туалет','Засорился писсуар',None)
                 case "PaB":
-                    problem(bot,cur,con,row[0][0],'туалет','Кончилась бумана',NULL)
-            deletequery(bot, call) 
+                    problem(bot,cur,con,floor,'туалет','Кончилась бумана',None)
+            deletequery(bot, call,cur,con) 
         except:
             print('MessageNotModifed168')
-
-
+    if call.data=="AnB":
+        try:
+            #смотрим, какой этаж до этого выбрал пользователь
+            cur.execute('''UPDATE users set button=(%s) ''',['что-то другое'])
+            con.commit()
+            bot.edit_message_text(chat_id=call.message.chat.id,
+                message_id=call.message.message_id,
+                text="Что случилось?",
+                parse_mode="HTML",
+                disable_web_page_preview=1,
+                reply_markup=Back_to_Greet_keyboard)
+        except:
+            print('MessageNotModifed168')
