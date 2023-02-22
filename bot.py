@@ -71,7 +71,7 @@ def send_text(message):
             if not (row[3] is None):
                 s = s + "\nномер "+str(row[3])
             bot.send_message(-1001759376814,s, parse_mode="HTML",
-                     disable_web_page_preview=1, reply_markup=keyboard111)
+                     disable_web_page_preview=1, reply_markup=Fix_keyboard)
     #Пробегаемся теперь по базе пользователей, если сообщение отправили в личку боту а не в чате сената
     cur.execute('''SELECT chat_id,message_id,button,floor,room,typeofproblem from users''')
     rows = cur.fetchall()
@@ -176,7 +176,6 @@ def callback_inline(call):
     if call.message:
         #В беседе сената починили поломку и сообщили боту
         keyhandlers.Fix(call,bot,cur,con)
-
         #В диалоге с ботом открылось начальное меню
         keyhandlers.Beginning(call,bot,cur,con)
 

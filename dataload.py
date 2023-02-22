@@ -36,7 +36,7 @@ def deletequery(bot, call, cur, con):
     try:
         bot.edit_message_text(chat_id=call.message.chat.id,
             message_id=call.message.message_id,
-            text=open('texts/Начало.txt','r').read(),
+            text=open('/home/user/infodept/texts/Начало.txt','r').read(),
             reply_markup=Greet_keyboard)
         bot.send_message(call.message.chat.id, 'Сенат получил твоё сообщение. Спасибо!')
         cur.execute('''DELETE from users 

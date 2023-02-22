@@ -10,7 +10,7 @@ def Beginning(call, bot, cur, con):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/Начало.txt','r').read(),
+                text=open('/home/user/infodept/texts/Начало.txt','r').read(),
                 reply_markup=Greet_keyboard)
             cur.execute('''DELETE from users 
                 WHERE chat_id=(%s) 
@@ -26,20 +26,20 @@ def Beginning(call, bot, cur, con):
 def CashAid(call, bot):
     #Начало --> Матпомощь
     if call.data == "CA":
-        try:
-            bot.edit_message_text(chat_id=call.message.chat.id, 
-                message_id=call.message.message_id, 
-                text=open('texts/Матпомощь/Матпомощь.txt','r').read(),         
-                parse_mode="HTML", 
-                reply_markup=Aid_keyboard)
-        except:
-            print('MessageNotModifed9')
+        #try:
+        bot.edit_message_text(chat_id=call.message.chat.id, 
+            message_id=call.message.message_id, 
+            text=open('/home/user/infodept/texts/Матпомощь/Матпомощь.txt','r').read(),         
+            parse_mode="HTML", 
+            reply_markup=Aid_keyboard)
+        #except:
+            #print('MessageNotModifed9')
     #Начало --> Матпомощь --> Контакты
     if call.data == "Co":
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Матпомощь/Контакты.txt','r').read(), 
+                text=open('/home/user/infodept/texts/Матпомощь/Контакты.txt','r').read(), 
                 parse_mode="HTML", 
                 disable_web_page_preview=1, 
                 reply_markup=Back_to_Aid_keyboard)
@@ -50,7 +50,7 @@ def CashAid(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Матпомощь/Правила.txt','r').read(),                 
+                text=open('/home/user/infodept/texts/Матпомощь/Правила.txt','r').read(),                 
                 parse_mode="HTML", 
                 reply_markup=Back_to_Aid_keyboard)
         except:
@@ -60,7 +60,7 @@ def CashAid(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Матпомощь/Категории.txt','r').read(), 
+                text=open('/home/user/infodept/texts/Матпомощь/Категории.txt','r').read(), 
                 parse_mode="HTML", 
                 reply_markup=Back_to_Aid_keyboard)
         except:
@@ -70,7 +70,7 @@ def CashAid(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Матпомощь/БланкМатпомощи.txt','r').read(),
+                text=open('/home/user/infodept/texts/Матпомощь/БланкМатпомощи.txt','r').read(),
                 parse_mode="HTML", 
                 reply_markup=Back_to_Aid_keyboard)
         except:
@@ -80,7 +80,7 @@ def CashAid(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Матпомощь/УдалённаяПодача.txt','r').read(), 
+                text=open('/home/user/infodept/texts/Матпомощь/УдалённаяПодача.txt','r').read(), 
                 disable_web_page_preview=1, 
                 parse_mode="HTML", 
                 reply_markup=Back_to_Aid_keyboard)
@@ -96,7 +96,7 @@ def Senat(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Сенат/Сенат.txt','r').read(),   
+                text=open('/home/user/infodept/texts/Сенат/Сенат.txt','r').read(),   
                 disable_web_page_preview=1, 
                 parse_mode='HTML', 
                 reply_markup=Senat_keyboard)
@@ -107,7 +107,7 @@ def Senat(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Сенат/Устав.txt','r').read(),
+                text=open('/home/user/infodept/texts/Сенат/Устав.txt','r').read(),
                 parse_mode='HTML', 
                 reply_markup=Back_to_Senat_keyboard)
         except:
@@ -117,7 +117,7 @@ def Senat(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Сенат/Инфографика.txt','r').read(), 
+                text=open('/home/user/infodept/texts/Сенат/Инфографика.txt','r').read(), 
                 parse_mode='HTML', 
                 reply_markup=Back_to_Senat_keyboard)
         except:
@@ -127,7 +127,7 @@ def Senat(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Сенат/Контакты.txt','r').read(), 
+                text=open('/home/user/infodept/texts/Сенат/Контакты.txt','r').read(), 
                 parse_mode='HTML', 
                 disable_web_page_preview=1, 
                 reply_markup=Back_to_Senat_keyboard)
@@ -143,7 +143,7 @@ def MaintDep(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id,
-                text=open('texts/Хозотдел/Хозотдел.txt','r').read(),
+                text=open('/home/user/infodept/texts/Хозотдел/Хозотдел.txt','r').read(),
                 parse_mode="HTML", 
                 disable_web_page_preview=1, 
                 reply_markup=MaintDep_keyboard)
@@ -154,7 +154,7 @@ def MaintDep(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Хозотдел/Инструментарий.txt','r').read(), 
+                text=open('/home/user/infodept/texts/Хозотдел/Инструментарий.txt','r').read(), 
                 parse_mode="HTML", 
                 reply_markup=Back_to_MaintDep_keyboard)
         except:
@@ -164,7 +164,7 @@ def MaintDep(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id,
-                text=open('texts/Хозотдел/ОтветственныеЗаЭтажи.txt','r').read(), 
+                text=open('/home/user/infodept/texts/Хозотдел/ОтветственныеЗаЭтажи.txt','r').read(), 
                 parse_mode="HTML",
                 reply_markup = Back_to_MaintDep_keyboard)
         except:
@@ -174,7 +174,7 @@ def MaintDep(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id,
-                text=open('texts/Хозотдел/КДС.txt','r').read(),
+                text=open('/home/user/infodept/texts/Хозотдел/КДС.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Back_to_MaintDep_keyboard)
         except:
@@ -184,7 +184,7 @@ def MaintDep(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/Хозотдел/Клуб.txt','r').read(),
+                text=open('/home/user/infodept/texts/Хозотдел/Клуб.txt','r').read(),
                 parse_mode="HTML", 
                 reply_markup=Back_to_MaintDep_keyboard)
         except:
@@ -194,7 +194,7 @@ def MaintDep(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/Хозотдел/Душ.txt','r').read(),   
+                text=open('/home/user/infodept/texts/Хозотдел/Душ.txt','r').read(),   
                 parse_mode="HTML", 
                 reply_markup=Back_to_MaintDep_keyboard)
         except:
@@ -204,7 +204,7 @@ def MaintDep(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id,
-                text=open('texts/Хозотдел/Боталка.txt','r').read(), 
+                text=open('/home/user/infodept/texts/Хозотдел/Боталка.txt','r').read(), 
                 parse_mode="HTML", 
                 reply_markup=Back_to_MaintDep_keyboard)
         except:
@@ -215,7 +215,7 @@ def MaintDep(call, bot):
         try: 
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/Хозотдел/Качалка.txt','r').read(),
+                text=open('/home/user/infodept/texts/Хозотдел/Качалка.txt','r').read(),
                 parse_mode="HTML", 
                 disable_web_page_preview=1, 
                 reply_markup=Back_to_MaintDep_keyboard)
@@ -226,7 +226,7 @@ def MaintDep(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id,
-                text=open('texts/Хозотдел/Велокомната.txt','r').read(),
+                text=open('/home/user/infodept/texts/Хозотдел/Велокомната.txt','r').read(),
                 parse_mode="HTML", 
                 reply_markup=Back_to_MaintDep_keyboard)
         except:
@@ -236,7 +236,7 @@ def MaintDep(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id,
-                text=open('texts/Хозотдел/Стиралка.txt','r').read(),
+                text=open('/home/user/infodept/texts/Хозотдел/Стиралка.txt','r').read(),
                 parse_mode="HTML", 
                 reply_markup=Back_to_MaintDep_keyboard)
         except:
@@ -251,7 +251,7 @@ def Dekanat(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Деканат/Деканат.txt','r').read(),
+                text=open('/home/user/infodept/texts/Деканат/Деканат.txt','r').read(),
                 disable_web_page_preview=1, 
                 reply_markup=Dekanat_keyboard)
         except:
@@ -261,7 +261,7 @@ def Dekanat(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Деканат/ДирекцияЭто.txt','r').read(),
+                text=open('/home/user/infodept/texts/Деканат/ДирекцияЭто.txt','r').read(),
                 disable_web_page_preview=1, 
                 parse_mode="HTML" , 
                 reply_markup=Back_to_Dekanat_keyboard)
@@ -272,7 +272,7 @@ def Dekanat(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Деканат/Контакты.txt','r').read(),
+                text=open('/home/user/infodept/texts/Деканат/Контакты.txt','r').read(),
                 disable_web_page_preview=1, 
                 parse_mode="HTML", 
                 reply_markup=Back_to_Dekanat_keyboard)
@@ -283,7 +283,7 @@ def Dekanat(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Деканат/Ведомость.txt','r').read(),
+                text=open('/home/user/infodept/texts/Деканат/Ведомость.txt','r').read(),
                 disable_web_page_preview=1, 
                 parse_mode="HTML", 
                 reply_markup=Back_to_Dekanat_keyboard)
@@ -294,7 +294,7 @@ def Dekanat(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id,
-                text=open('texts/Деканат/АкадемОтпуск.txt','r').read(),
+                text=open('/home/user/infodept/texts/Деканат/АкадемОтпуск.txt','r').read(),
                 disable_web_page_preview=1, 
                 parse_mode="HTML", 
                 reply_markup=Back_to_Dekanat_keyboard)
@@ -310,7 +310,7 @@ def Abiturient(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Абитуриентам/Абитуриентам.txt','r').read(), 
+                text=open('/home/user/infodept/texts/Абитуриентам/Абитуриентам.txt','r').read(), 
                 parse_mode="HTML", 
                 reply_markup=Abit_keyboard)
         except:
@@ -320,7 +320,7 @@ def Abiturient(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Абитуриентам/Ссылки.txt','r').read(), 
+                text=open('/home/user/infodept/texts/Абитуриентам/Ссылки.txt','r').read(), 
                 parse_mode="HTML", 
                 reply_markup=Back_to_Abit_keyboard)
         except:
@@ -330,7 +330,7 @@ def Abiturient(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Абитуриентам/КартаГородка.txt','r').read(),
+                text=open('/home/user/infodept/texts/Абитуриентам/КартаГородка.txt','r').read(),
                 parse_mode="HTML", 
                 reply_markup=Back_to_Abit_keyboard )
         except:
@@ -340,7 +340,7 @@ def Abiturient(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id, 
-                text=open('texts/Абитуриентам/ОЛФИ.txt','r').read(),
+                text=open('/home/user/infodept/texts/Абитуриентам/ОЛФИ.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Back_to_Abit_keyboard )
         except:
@@ -350,7 +350,7 @@ def Abiturient(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Абитуриентам/КонкурсныеГруппы.txt','r').read(),
+                text=open('/home/user/infodept/texts/Абитуриентам/КонкурсныеГруппы.txt','r').read(),
                 parse_mode="HTML", 
                 reply_markup=Back_to_Abit_keyboard)
         except:
@@ -360,7 +360,7 @@ def Abiturient(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Абитуриентам/ГдеЯБудуЖить.txt','r').read(), 
+                text=open('/home/user/infodept/texts/Абитуриентам/ГдеЯБудуЖить.txt','r').read(), 
                 parse_mode="HTML", 
                 reply_markup=Back_to_Abit_keyboard)
         except:
@@ -370,7 +370,7 @@ def Abiturient(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/Абитуриентам/СтатистикаПоступления.txt','r').read(),
+                text=open('/home/user/infodept/texts/Абитуриентам/СтатистикаПоступления.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Back_to_Abit_keyboard)
         except:
@@ -385,7 +385,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id, 
                 message_id=call.message.message_id, 
-                text=open('texts/ОбщиеСтуденческиеДела/ОбщиеСтуденческиеДела.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/ОбщиеСтуденческиеДела.txt','r').read(),
                 reply_markup=Stud_keyboard)
         except:
             print('MessageNotModifed19')
@@ -394,7 +394,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/ОбщиеСтуденческиеДела/ДокументыСтудента/ДокументыСтудента.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/ДокументыСтудента/ДокументыСтудента.txt','r').read(),
                 reply_markup=Doc_keyboard)
         except:
             print('MessageNotModifed21')
@@ -403,7 +403,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/ОбщиеСтуденческиеДела/ДокументыСтудента/СтудБилет.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/ДокументыСтудента/СтудБилет.txt','r').read(),
                 reply_markup=Back_to_Doc_keyboard)
         except:
             print('MessageNotModifed22')
@@ -412,7 +412,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/ОбщиеСтуденческиеДела/ДокументыСтудента/ЭКД.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/ДокументыСтудента/ЭКД.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Back_to_Doc_keyboard)
         except:
@@ -422,7 +422,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/ОбщиеСтуденческиеДела/ДокументыСтудента/СоцКарта.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/ДокументыСтудента/СоцКарта.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Back_to_Doc_keyboard)
         except:
@@ -432,7 +432,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/ОбщиеСтуденческиеДела/ДокументыСтудента/PhystechEdu.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/ДокументыСтудента/PhystechEdu.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Back_to_Doc_keyboard)
         except:
@@ -442,7 +442,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/ОбщиеСтуденческиеДела/ДокументыСтудента/Регистрация.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/ДокументыСтудента/Регистрация.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Back_to_Doc_keyboard)
         except:
@@ -452,7 +452,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/ОбщиеСтуденческиеДела/Поликлиника/Поликлиника.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/Поликлиника/Поликлиника.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Hosp_keyboard)
         except:
@@ -462,7 +462,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/ОбщиеСтуденческиеДела/Поликлиника/КакПрикрепляться.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/Поликлиника/КакПрикрепляться.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Back_to_Hosp_keyboard)
         except:
@@ -472,7 +472,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/ОбщиеСтуденческиеДела/Поликлиника/КакЗаписаться.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/Поликлиника/КакЗаписаться.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Back_to_Hosp_keyboard)
         except:
@@ -482,7 +482,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/ОбщиеСтуденческиеДела/Абрамовка/Абрамовка.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/Абрамовка/Абрамовка.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Abram_keyboard)
         except:
@@ -492,7 +492,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/ОбщиеСтуденческиеДела/Абрамовка/ЧтоЭто.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/Абрамовка/ЧтоЭто.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Back_to_Abram_keyboard)
         except:
@@ -502,7 +502,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/ОбщиеСтуденческиеДела/Абрамовка/Малообеспеченность.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/Абрамовка/Малообеспеченность.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Back_to_Abram_keyboard)
         except:
@@ -512,7 +512,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/ОбщиеСтуденческиеДела/Абрамовка/Успеваемость.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/Абрамовка/Успеваемость.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Back_to_Abram_keyboard)
         except:
@@ -522,7 +522,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/ОбщиеСтуденческиеДела/Абрамовка/Вопросы.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/Абрамовка/Вопросы.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Back_to_Abram_keyboard)
         except:
@@ -532,7 +532,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/ОбщиеСтуденческиеДела/Справки.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/Справки.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Back_to_Stud_keyboard)
         except:
@@ -542,7 +542,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/ОбщиеСтуденческиеДела/Библиотека.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/Библиотека.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Back_to_Stud_keyboard)
         except:
@@ -552,7 +552,7 @@ def GeneralStudentBuisness(call, bot):
         try:
             bot.edit_message_text(chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
-                text=open('texts/ОбщиеСтуденческиеДела/ВоинскийУчёт.txt','r').read(),
+                text=open('/home/user/infodept/texts/ОбщиеСтуденческиеДела/ВоинскийУчёт.txt','r').read(),
                 parse_mode="HTML",
                 reply_markup=Back_to_Stud_keyboard)
         except:
@@ -566,7 +566,7 @@ def Claims(call, bot, cur, con):
             try:
                 bot.edit_message_text(chat_id=call.message.chat.id, 
                     message_id=call.message.message_id,
-                    text=open('texts/ЖалобыИПредложения.txt','r').read(), 
+                    text=open('/home/user/infodept/texts/ЖалобыИПредложения.txt','r').read(), 
                     parse_mode="HTML", 
                     disable_web_page_preview=1, 
                     reply_markup=Back_to_Greet_keyboard)
@@ -795,32 +795,32 @@ def Issues(call, bot, cur, con):
             print('MessageNotModifed167')
     #6-ка: поломки, мыло, бумага --> Выбран 2,3,4,5ый этаж --> Туалет --> Засорился писсуар/Кончилась бумага
     if call.data in ["UrB","PaB"]:
-        try:
-            #смотрим, какой этаж до этого выбрал пользователь
-            cur.execute('''SELECT floor from users 
-                WHERE chat_id=(%s) AND 
-                message_id=(%s)''',
-                [call.message.chat.id, call.message.message_id])
-            rows = cur.fetchall()
-            floor=rows[0][0]
-            match call.data:
-                case "UrB":
-                    problem(bot,cur,con,rows[0][0],'туалет','Засорился писсуар',None)
-                case "PaB":
-                    problem(bot,cur,con,floor,'туалет','Кончилась бумана',None)
-            deletequery(bot, call,cur,con) 
-        except:
-            print('MessageNotModifed168')
+        #try:
+        #смотрим, какой этаж до этого выбрал пользователь
+        cur.execute('''SELECT floor from users 
+            WHERE chat_id=(%s) AND 
+            message_id=(%s)''',
+            [call.message.chat.id, call.message.message_id])
+        rows = cur.fetchall()
+        floor=rows[0][0]
+        match call.data:
+            case "UrB":
+                problem(bot,cur,con,rows[0][0],'туалет','Засорился писсуар',None)
+            case "PaB":
+                problem(bot,cur,con,floor,'туалет','Кончилась бумага',None)
+        deletequery(bot, call, cur, con) 
+        #except:
+          #  print('MessageNotModifed168')
     if call.data=="AnB":
-        try:
-            #смотрим, какой этаж до этого выбрал пользователь
-            cur.execute('''UPDATE users set button=(%s) ''',['что-то другое'])
-            con.commit()
-            bot.edit_message_text(chat_id=call.message.chat.id,
-                message_id=call.message.message_id,
-                text="Что случилось?",
-                parse_mode="HTML",
-                disable_web_page_preview=1,
-                reply_markup=Back_to_Greet_keyboard)
-        except:
-            print('MessageNotModifed168')
+        #try:
+        #смотрим, какой этаж до этого выбрал пользователь
+        cur.execute('''UPDATE users set button=(%s) ''',['что-то другое'])
+        con.commit()
+        bot.edit_message_text(chat_id=call.message.chat.id,
+            message_id=call.message.message_id,
+            text="Что случилось?",
+            parse_mode="HTML",
+            disable_web_page_preview=1,
+            reply_markup=Back_to_Greet_keyboard)
+        #except:
+         #   print('MessageNotModifed168')
