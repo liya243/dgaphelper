@@ -190,4 +190,4 @@ def callback_inline(call):
 
         #Отдельная система кнопок для сообщений о поломках
         keyhandlers.Issues(call, bot, cur, con)
-bot.infinity_polling()
+bot.infinity_polling(timeout=123)

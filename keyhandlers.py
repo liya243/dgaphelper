@@ -776,7 +776,7 @@ def Issues(call, bot, cur, con):
             message_id=(%s)''',
             [call.message.chat.id, call.message.message_id])
         rows = cur.fetchall()
-        problem(bot,cur,con,rows[0][0],'умывальник',rows[0][1],int(call.data[4]))
+        problem(bot,cur,con,rows[0][0],rows[0][1],'Закончилось мыло',None)
         deletequery(bot, call,cur,con)    
     #6-ка: поломки, мыло, бумага --> Выбран 2,3,4,5ый этаж --> Туалет
     if call.data == "ToB":
