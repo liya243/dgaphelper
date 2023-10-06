@@ -182,11 +182,9 @@ def callback_inline(call):
         #Подразделы начального меню
         keyhandlers.CashAid(call, bot)#Подразделы Матпомощи
         keyhandlers.Senat(call, bot)#Подразделы Сената
-        keyhandlers.Dekanat(call, bot)#Подразделы Деканата
         keyhandlers.MaintDep(call, bot)#Подразделы Хоз. Отдела
-        keyhandlers.Abiturient(call, bot)#Подразделы Абитуриентов
-        keyhandlers.GeneralStudentBuisness(call, bot)#Подразделы Общих Студ. Дел
         keyhandlers.Claims(call, bot, cur, con)#Жалобы и предложения
+        keyhandlers.DgapHelp(call, bot)#ВыручайФОПФ
 
         #Отдельная система кнопок для сообщений о поломках
         keyhandlers.Issues(call, bot, cur, con)

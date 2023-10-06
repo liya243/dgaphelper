@@ -4,12 +4,9 @@ from telebot import types
 #Начало
 Greet_keyboard = types.InlineKeyboardMarkup()
 rows = [{'💵Матпомощь': 'CA', '🌏Сенат': 'Se'},
-        {'🛠 Хозотдел': 'MD', '☎️Деканат': 'De'},
-        {'🎒Абитуриентам': 'En'},
-        {'👨🏻🎓Общие студ. дела': 'GS'},
+        {'🛠 Хозотдел': 'MD', 'Выручай-ФОПФ🤝': 'DGhB'},
         {'😳Жалобы и предложения': 'ClB'},
-        {'6-ка: поломки/мыло/бумага': 'BrB'},
-        {'Выручай-ФОПФ🤝': 'DGhB'}]
+        {'6-ка: поломки/мыло/бумага': 'BrB'}]
 for row in rows:
     Greet_keyboard.add(*[types.InlineKeyboardButton(text,callback_data=callback_data) for text,callback_data in row.items()])
 #клавиатура из одной кнопки, возвращающая в меню Greet_keyboard    
@@ -20,10 +17,7 @@ Back_to_Greet_keyboard.add(types.InlineKeyboardButton(text="⬅️Назад", c
 
 #Начало --> Матпомощь
 Aid_keyboard = types.InlineKeyboardMarkup()
-rows = [{'📲Контакты': 'Co','❌Правила': 'Ru'},
-        {'📖Категории': 'CaB','📝Бланк': 'Fo'},
-       #{'📫Удалённая подача':'Di'}, !!!Данная кнопка была актуальна на период пандемии, в данный момент заявления на МП онлайн не подаются!!!
-        {'⬅️Назад': 'begin'}]#последняя кнопка возвращает в предыдущее Greet_keyboard меню
+rows = [{'⬅️Назад': 'begin'}]#последняя кнопка возвращает в предыдущее Greet_keyboard меню
 for row in rows:
     Aid_keyboard.add(*[types.InlineKeyboardButton(text,callback_data=callback_data) for text,callback_data in row.items()])
 #клавиатура из одной кнопки, возвращающая в меню Aid_keyboard
@@ -34,9 +28,7 @@ Back_to_Aid_keyboard.add(types.InlineKeyboardButton(text="⬅️Назад", cal
 
 #Начало --> Сенат
 Senat_keyboard = types.InlineKeyboardMarkup()
-rows = [{'📑Устав': 'Ch', '📬Контакты': 'Cse'},
-        {'📊Инфографика': 'In'},
-        {'⬅️Назад': 'begin'}]#последняя кнопка возвращает в предыдущее Greet_keyboard меню
+rows = [{'⬅️Назад': 'begin'}]#последняя кнопка возвращает в предыдущее Greet_keyboard меню
 for row in rows:
     Senat_keyboard.add(*[types.InlineKeyboardButton(text,callback_data=callback_data) for text,callback_data in row.items()])
 #клавиатура из одной кнопки, возвращающая в меню Senat_keyboard
@@ -47,100 +39,12 @@ Back_to_Senat_keyboard.add(types.InlineKeyboardButton(text="⬅️Назад", c
 
 #Начало --> Хозотдел
 MaintDep_keyboard = types.InlineKeyboardMarkup()
-rows = [{'🛠Инструментарий': 'ToR'},
-        {'🧻🧼Ответственные за этажи': 'FF'},
-        {'🧑🏻💻КДС': 'RFK', '📽 Клуб': 'Cl'},
-        {'🛁Душ': 'Sh', '🧑🎓Боталка': 'TR'},
-        {'🏋️ Тренажёрка': 'SR', '🚴Велокомната': 'BR'},
-        {'🧺Стиралка': 'WR', '⬅️Назад': 'begin'}]#последняя кнопка возвращает в предыдущее Greet_keyboard меню
+rows = [{'⬅️Назад': 'begin'}]#последняя кнопка возвращает в предыдущее Greet_keyboard меню
 for row in rows:
     MaintDep_keyboard.add(*[types.InlineKeyboardButton(text,callback_data=callback_data) for text,callback_data in row.items()])
 #клавиатура из одной кнопки, возвращающая в меню MaintDep_keyboard
 Back_to_MaintDep_keyboard = types.InlineKeyboardMarkup()
 Back_to_MaintDep_keyboard.add(types.InlineKeyboardButton(text="⬅️Назад", callback_data="MD"))
-#--------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-#Начало --> Деканат
-Dekanat_keyboard = types.InlineKeyboardMarkup()
-rows = [{'💁Дирекция это': 'Dir', '📲Контакты': 'DirC'},
-        {'🏖 Академ. отпуск': 'Ac', '🧮Ведомость': 'VeB'},
-        {'⬅️Назад': 'begin'}]#последняя кнопка возвращает в предыдущее Greet_keyboard меню
-for row in rows:
-    Dekanat_keyboard.add(*[types.InlineKeyboardButton(text,callback_data=callback_data) for text,callback_data in row.items()])
-#клавиатура из одной кнопки, возвращающая в меню Hosp_keyboard
-Back_to_Dekanat_keyboard = types.InlineKeyboardMarkup()
-Back_to_Dekanat_keyboard.add(types.InlineKeyboardButton(text="⬅️Назад", callback_data="De"))
-#--------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-#Начало --> Абитуриентам
-Abit_keyboard = types.InlineKeyboardMarkup()
-rows = [{'📚Конкурсные группы': 'Sy'},
-        {'📊Статистика поступления': 'Stat'},
-        {' Карта городка': 'Map'},
-        {'🧭Ссылки': 'UL', '📜О ЛФИ': 'AS'},
-        {'🏡Где я буду жить': 'Do', '⬅️Назад': 'begin'}]#последняя кнопка возвращает в предыдущее Greet_keyboard меню
-for row in rows:
-    Abit_keyboard.add(*[types.InlineKeyboardButton(text,callback_data=callback_data) for text,callback_data in row.items()])
-#клавиатура из одной кнопки, возвращающая в меню Abit_keyboard
-Back_to_Abit_keyboard = types.InlineKeyboardMarkup()
-Back_to_Abit_keyboard.add(types.InlineKeyboardButton(text="⬅️Назад", callback_data="En"))
-#--------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-#Начало --> Общие студ. дела
-Stud_keyboard = types.InlineKeyboardMarkup()
-rows = [{'📆Документы студента': 'StDoc'},
-        {'💊Поликлиника': 'Pol', '💸Абрамовка': 'Abr'},
-        {'📝Справки': 'Ce', '📚Библиотека': 'Lib'},
-        {'🔍Воинский учёт': 'MilReg', '⬅️Назад': 'begin'}]#последняя кнопка возвращает в предыдущее Greet_keyboard меню
-for row in rows:
-    Stud_keyboard.add(*[types.InlineKeyboardButton(text,callback_data=callback_data) for text,callback_data in row.items()])
-#клавиатура из одной кнопки, возвращающая в меню Stud_keyboard
-Back_to_Stud_keyboard = types.InlineKeyboardMarkup()
-Back_to_Stud_keyboard.add(types.InlineKeyboardButton(text="⬅️Назад", callback_data="GS"))
-#--------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-#Начало --> Общие студ. дела --> Документы студента
-Doc_keyboard = types.InlineKeyboardMarkup()
-rows = [{'📘Студ. билет': 'StC', '🔐ЭКД': 'EC'},
-        {'💳Соц. карта': 'SoC', '📫Phystech.edu': 'PhE'},
-        {'🏡Регистрация': 'LiR', '⬅️Назад': 'GS'}]#последняя кнопка возвращает в предыдущее Stud_keyboard меню
-for row in rows:
-    Doc_keyboard.add(*[types.InlineKeyboardButton(text,callback_data=callback_data) for text,callback_data in row.items()])
-#клавиатура из одной кнопки, возвращающая в меню Doc_keyboard
-Back_to_Doc_keyboard = types.InlineKeyboardMarkup()
-Back_to_Doc_keyboard.add(types.InlineKeyboardButton(text="⬅️Назад", callback_data="StDoc"))
-#--------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-#Начало --> Общие студ. дела --> Поликлиника
-Hosp_keyboard = types.InlineKeyboardMarkup()
-rows = [{'📎Как прикрепляться': 'HTR'},
-        {'📆Как записаться': 'HTV'},
-        {'⬅️Назад': 'GS'}]#последняя кнопка возвращает в предыдущее Stud_keyboard меню
-for row in rows:
-    Hosp_keyboard.add(*[types.InlineKeyboardButton(text,callback_data=callback_data) for text,callback_data in row.items()])
-#клавиатура из одной кнопки, возвращающая в меню Hosp_keyboard
-Back_to_Hosp_keyboard = types.InlineKeyboardMarkup()
-Back_to_Hosp_keyboard.add(types.InlineKeyboardButton(text="⬅️Назад", callback_data="Pol"))
-#--------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-#Начало --> Общие студ. дела --> Абрамовка
-Abram_keyboard = types.InlineKeyboardMarkup()
-rows = [{'🎁Что это и для кого': 'WTF'},
-        {'Малообеспеченность': 'LAB'},
-        {'Успеваемость': 'GMB'},
-        {'Частозадаваемые вопросы': 'AQB'},
-        {'⬅️Назад': 'GS'}]#последняя кнопка возвращает в предыдущее Stud_keyboard меню
-for row in rows:
-    Abram_keyboard.add(*[types.InlineKeyboardButton(text,callback_data=callback_data) for text,callback_data in row.items()])
-#клавиатура из одной кнопки, возвращающая в меню Abram_keyboard
-Back_to_Abram_keyboard = types.InlineKeyboardMarkup()
-Back_to_Abram_keyboard.add(types.InlineKeyboardButton(text="⬅️Назад", callback_data="Abr"))
 #--------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -217,6 +121,17 @@ for row in rows:
 #клавиатура из одной кнопки, возвращающая в меню Toilet_keyboard
 Back_to_Toilet_keyboard = types.InlineKeyboardMarkup()
 Back_to_Toilet_keyboard.add(types.InlineKeyboardButton(text="⬅️Назад", callback_data="ToB"))
+#--------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#Начало --> ВыручайФОПФ
+DgapHelp_keyboard = types.InlineKeyboardMarkup()
+rows = [{'⬅️Назад': 'begin'}]#последняя кнопка возвращает в предыдущее Greet_keyboard меню
+for row in rows:
+    DgapHelp_keyboard.add(*[types.InlineKeyboardButton(text,callback_data=callback_data) for text,callback_data in row.items()])
+#клавиатура из одной кнопки, возвращающая в меню DgapHelp_keyboard
+Back_to_DgapHelp_keyboard = types.InlineKeyboardMarkup()
+Back_to_DgapHelp_keyboard.add(types.InlineKeyboardButton(text="⬅️Назад", callback_data="DGhB"))
 #--------------------------------------------------------------------------------------------------------------------------------------------------
 
 
